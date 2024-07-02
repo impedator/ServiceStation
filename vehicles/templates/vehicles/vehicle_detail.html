@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Detail</title>
+</head>
+<body>
+    <h1>{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year }})</h1>
+    <p>VIN: {{ vehicle.vin }}</p>
+    <p>Owner: <a href="{% url 'client_detail' vehicle.client.pk %}">{{ vehicle.client.first_name }} {{ vehicle.client.last_name }}</a></p>
+</body>
+</html>

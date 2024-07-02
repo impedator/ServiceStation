@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parts</title>
+</head>
+<body>
+    <h1>Parts</h1>
+    <ul>
+        {% for part in parts %}
+        <li><a href="{% url 'part_detail' part.pk %}">{{ part.name }}</a> - {{ part.quantity }} in stock</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

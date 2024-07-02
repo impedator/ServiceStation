@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workshop Manager</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'client_list' %}">Clients</a></li>
+                <li><a href="{% url 'vehicle_list' %}">Vehicles</a></li>
+                <li><a href="{% url 'order_list' %}">Orders</a></li>
+                <li><a href="{% url 'part_list' %}">Inventory</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Welcome to the Workshop Manager</h1>
+    <footer>
+        <p>© 2023 Workshop Manager</p>
+    </footer>
+</body>
+</html>

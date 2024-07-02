@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicles</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Vehicles</h1>
+    <ul>
+        {% for vehicle in vehicles %}
+        <li><a href="{% url 'vehicle_detail' vehicle.pk %}">{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year }})</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
