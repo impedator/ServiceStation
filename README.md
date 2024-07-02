@@ -1,4 +1,3 @@
-```
 # ServiceStation
 
 ServiceStation is a comprehensive workshop management system designed to streamline operations in automotive repair shops. This web-based application provides tools to manage clients, vehicles, orders, and inventory effectively.
@@ -80,4 +79,3 @@ Distributed under the GPLv3 License. See `LICENSE` for more information.
 Your Name - krzysztof.strug@gmail.com - email
 
 Project Link: [https://github.com/yourusername/ServiceStation](https://github.com/yourusername/ServiceStation)
-```
