@@ -76,6 +76,6 @@ Distributed under the GPLv3 License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - krzysztof.strug@gmail.com - email
+Your Name - krzysztof.strug+serivicestation@gmail.com - email
 
-Project Link: [https://github.com/yourusername/ServiceStation](https://github.com/yourusername/ServiceStation)
+Project Link: [https://github.com/impedator/ServiceStation](https://github.com/impedator/ServiceStation)
