@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Clients</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <h1>Add Client</h1>
-    <a href="{% url 'add_client' %}">Add New Client</a>
+{% extends "base.html" %}
+
+{% block title %}Clients - Workshop Manager{% endblock %}
+
+{% block content %}
     <h1>Clients</h1>
+    <a href="{% url 'add_client' %}">Add New Client</a>
     <ul>
         {% for client in clients %}
         <li><a href="{% url 'client_detail' client.pk %}">{{ client.first_name }} {{ client.last_name }}</a></li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

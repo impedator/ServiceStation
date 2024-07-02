@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Client Detail</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Client Detail - Workshop Manager{% endblock %}
+
+{% block content %}
     <h1>{{ client.first_name }} {{ client.last_name }}</h1>
     <p>Email: {{ client.email }}</p>
     <p>Phone: {{ client.phone_number }}</p>
     <p>Address: {{ client.address }}</p>
-</body>
-</html>
+{% endblock %}

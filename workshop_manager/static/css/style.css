@@ -4,9 +4,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
-nav {
+header {
     background-color: #444;
     padding: 10px;
+    text-align: center;
 }
 
 nav ul {
@@ -19,11 +20,22 @@ nav ul li {
     margin-right: 10px;
 }
 
-a {
+nav ul li a {
     color: #1a73e8;
     text-decoration: none;
 }
 
-a:hover {
+nav ul li a:hover {
     text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
 }
