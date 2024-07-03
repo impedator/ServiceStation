@@ -74,3 +74,21 @@ h1, h2 {
 .btn:hover {
     background-color: #0056b3;
 }
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+}

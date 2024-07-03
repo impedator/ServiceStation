@@ -8,7 +8,7 @@
 
     <div class="section">
         <h2>Clients</h2>
-        <a href="{% url 'add_client' %}" class="btn btn-primary mb-3">Add New Client</a>
+        <button id="add-client-btn" class="btn btn-primary mb-3">Add New Client</button>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -17,16 +17,20 @@
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Address</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="client-table-body">
                 {% for client in clients %}
-                <tr>
+                <tr id="client-row-{{ client.id }}">
                     <td>{{ client.first_name }}</td>
                     <td>{{ client.last_name }}</td>
                     <td>{{ client.email }}</td>
                     <td>{{ client.phone_number }}</td>
                     <td>{{ client.address }}</td>
+                    <td>
+                        <button class="btn btn-danger delete-client-btn" data-client-id="{{ client.id }}">Delete</button>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -110,4 +114,83 @@
         </table>
     </div>
 </div>
+
+<script>
+    document.getElementById('add-client-btn').addEventListener('click', function() {
+        const clientTableBody = document.getElementById('client-table-body');
+        const newRow = document.createElement('tr');
+
+        newRow.innerHTML = `
+            <td><input type="text" id="new-first-name" class="form-control"></td>
+            <td><input type="text" id="new-last-name" class="form-control"></td>
+            <td><input type="email" id="new-email" class="form-control"></td>
+            <td><input type="text" id="new-phone-number" class="form-control"></td>
+            <td><input type="text" id="new-address" class="form-control"></td>
+            <td>
+                <button id="save-client-btn" class="btn btn-success">Save</button>
+                <button id="cancel-client-btn" class="btn btn-secondary">Cancel</button>
+            </td>
+        `;
+
+        clientTableBody.appendChild(newRow);
+
+        document.getElementById('save-client-btn').addEventListener('click', function() {
+            const firstName = document.getElementById('new-first-name').value;
+            const lastName = document.getElementById('new-last-name').value;
+            const email = document.getElementById('new-email').value;
+            const phoneNumber = document.getElementById('new-phone-number').value;
+            const address = document.getElementById('new-address').value;
+
+            fetch('{% url "add_client_ajax" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    'first_name': firstName,
+                    'last_name': lastName,
+                    'email': email,
+                    'phone_number': phoneNumber,
+                    'address': address
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert('Error adding client');
+                }
+            });
+        });
+
+        document.getElementById('cancel-client-btn').addEventListener('click', function() {
+            clientTableBody.removeChild(newRow);
+        });
+    });
+
+    document.querySelectorAll('.delete-client-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const clientId = this.dataset.clientId;
+            if (confirm('Are you sure you want to delete this client?')) {
+                fetch(`/clients/delete/${clientId}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById(`client-row-${clientId}`).remove();
+                    } else {
+                        alert('Error deleting client');
+                    }
+                });
+            }
+        });
+    });
+</script>
+
 {% endblock %}
