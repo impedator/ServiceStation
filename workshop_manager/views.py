@@ -1,6 +1,18 @@
 from django.shortcuts import render
-# from django.http import HttpResponse
-
+from clients.models import Client
+from vehicles.models import Vehicle
+from orders.models import Order
+from inventory.models import Part
 
 def index(request):
-    return render(request, 'index.html')
+    clients = Client.objects.all()
+    vehicles = Vehicle.objects.all()
+    orders = Order.objects.all()
+    parts = Part.objects.all()
+    context = {
+        'clients': clients,
+        'vehicles': vehicles,
+        'orders': orders,
+        'parts': parts
+    }
+    return render(request, 'index.html', context)

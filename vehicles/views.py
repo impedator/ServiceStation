@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Vehicle
+from .forms import VehicleForm
 
 def vehicle_list(request):
     vehicles = Vehicle.objects.all()
@@ -8,3 +9,13 @@ def vehicle_list(request):
 def vehicle_detail(request, pk):
     vehicle = get_object_or_404(vehicle, pk=pk)
     return render(request, 'vehicles/vehicle_detail.html', {'vehicle': vehicle})
+
+def add_vehicle(request):
+    if request.method == 'POST':
+        form = VehicleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('vehicle_list')
+    else:
+        form = VehicleForm()
+    return render(request, 'vehicles/add_vehicle.html', {'form': form})
