@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Parts</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Parts - Workshop Manager{% endblock %}
+
+{% block content %}
     <h1>Parts</h1>
     <ul>
         {% for part in parts %}
         <li><a href="{% url 'part_detail' part.pk %}">{{ part.name }}</a> - {{ part.quantity }} in stock</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
+

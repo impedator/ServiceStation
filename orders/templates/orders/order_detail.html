@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Order Detail</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Order Detail - Workshop Manager{% endblock %}
+
+{% block content %}
     <h1>Order {{ order.id }}</h1>
     <p>Vehicle: <a href="{% url 'vehicle_detail' order.vehicle.pk %}">{{ order.vehicle.make }} {{ order.vehicle.model }} ({{ order.vehicle.year }})</a></p>
     <p>Description: {{ order.description }}</p>
     <p>Status: {{ order.status }}</p>
     <p>Created at: {{ order.created_at }}</p>
     <p>Updated at: {{ order.updated_at }}</p>
-</body>
-</html>
+{% endblock %}
+

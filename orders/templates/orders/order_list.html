@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Orders</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Orders - Workshop Manager{% endblock %}
+
+{% block content %}
     <h1>Orders</h1>
     <ul>
         {% for order in orders %}
         <li><a href="{% url 'order_detail' order.pk %}">Order {{ order.id }} for {{ order.vehicle.make }} {{ order.vehicle.model }} ({{ order.vehicle.year }})</a> - {{ order.status }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

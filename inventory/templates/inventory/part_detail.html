@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Part Detail</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Part Detail - Workshop Manager{% endblock %}
+
+{% block content %}
     <h1>{{ part.name }}</h1>
     <p>Quantity: {{ part.quantity }}</p>
     <p>Price: ${{ part.price }}</p>
-</body>
-</html>
+{% endblock %}
+
